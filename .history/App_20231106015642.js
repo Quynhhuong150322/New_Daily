@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import Login from "./screens/Login";
 import Signup from "./screens/Signup";
 import  Welcome from "./screens/Welcome";
-import  Home from "./screens/Home";
 
 // import * as firebase from 'firebase';
 
@@ -64,10 +63,6 @@ export default function App() {
           options={{
             headerShown: false
           }}
-        />
-        <Stack.Screen
-          name="Home"
-          component={Home}
         />
       </Stack.Navigator>
     </NavigationContainer>
