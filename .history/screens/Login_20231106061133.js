@@ -11,7 +11,7 @@ import {auth} from '../firebase'
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
-    const [isPasswordShown, setIsPasswordShown] = useState(true);
+    const [isPasswordShown, setIsPasswordShown] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const navigation = useNavigation()
 
@@ -121,7 +121,7 @@ const Login = () => {
                             }}
                         >
                             {
-                                isPasswordShown == true ? (
+                                isPasswordShown == false ? (
                                     <Ionicons name="eye" size={24} color={colors.black} />
                                 ) : (
                                     <Ionicons name="eye-off" size={24} color={colors.black} />
