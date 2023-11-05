@@ -23,7 +23,7 @@ Dự án được tạo ra với::
 2. Clone dự án từ GitHub:
 
    ```
-   git clone https://github.com/yourusername/NewDailyApp.git
+   git clone [https://github.com/yourusername/NewDailyApp.git](https://github.com/Quynhhuong150322/New_Daily.git)
    ```
 
 3. Di chuyển vào thư mục dự án:
