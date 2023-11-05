@@ -104,14 +104,7 @@ Nếu bạn muốn đóng góp vào dự án New Daily App, bạn có thể làm
 
 ## Tác Giả
 
-- Tên: Your Name
-- Email: your.email@example.com
-- GitHub: [https://github.com/yourusername](https://github.com/yourusername)
+- Tên: Nguyễn Thị Quỳnh Hương & Nguyễn Thị Hồng
+- Email: 20521383@gm.uit.edu.vn hoặc 20521357@gm.uit.edu.vn
+- GitHub: 
 
-## Giấy Phép
-
-Dự án New Daily App được phát hành dưới giấy phép MIT. Xem tệp [LICENSE](LICENSE) để biết chi tiết.
-
----
-
-Đây là một mẫu README.md đơn giản cho ứng dụng New Daily App. Bạn có thể sửa đổi và điều chỉnh nó theo dự án cụ thể của bạn.
