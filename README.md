@@ -12,6 +12,11 @@ New Daily App là một ứng dụng đọc tin tức hàng ngày giúp bạn c�
 - Đánh dấu tin tức quan trọng để xem sau.
 - Hỗ trợ đọc offline cho việc đọc tin khi không có kết nối internet.
 
+## Công nghệ sử dụng
+Dự án được tạo ra với::
+* Frontend: React-Native
+* Backend: Firebase
+
 ## Cài Đặt
 
 1. Đầu tiên, hãy cài đặt Node.js và npm trên máy tính của bạn.
