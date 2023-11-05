@@ -78,12 +78,12 @@ NewDailyApp/
 
 Nếu bạn muốn đóng góp vào dự án New Daily App, bạn có thể làm theo các bước sau:
 
-1. Fork dự án từ [https://github.com/yourusername/NewDailyApp](https://github.com/yourusername/NewDailyApp) sang tài khoản GitHub của bạn.
+1. Fork dự án từ https://github.com/Quynhhuong150322/New_Daily.git sang tài khoản GitHub của bạn.
 
 2. Clone dự án mới từ tài khoản GitHub của bạn:
 
    ```
-   git clone https://github.com/yourusername/NewDailyApp.git
+   git clone https://github.com/Quynhhuong150322/New_Daily.git
    ```
 
 3. Tạo một nhánh mới để làm việc:
