@@ -1,10 +1,10 @@
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-export default function Home({navigation}) {
+export default function Home() {
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <Text>Trending</Text>
     </View>
   );
 }

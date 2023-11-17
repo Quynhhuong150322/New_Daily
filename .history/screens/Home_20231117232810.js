@@ -5,6 +5,9 @@ export default function Home({navigation}) {
   return (
     <View style={styles.container}>
       <Text>Home</Text>
+      <Button
+        onPress={() => navigation.navigate("BottomTab")}
+      />
     </View>
   );
 }
