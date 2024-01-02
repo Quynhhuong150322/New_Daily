@@ -14,8 +14,7 @@ New Daily App là một ứng dụng đọc tin tức hàng ngày giúp bạn c�
 
 ## Công nghệ sử dụng
 Dự án được tạo ra với::
-* Frontend: React-Native
-* Backend: Firebase
+r* Backend: Firebase
 
 ## Cài Đặt
 
