@@ -4,11 +4,15 @@ import { useNavigation } from '@react-navigation/core';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { BookmarkSquareIcon } from "react-native-heroicons/solid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Alert } from 'react-native';
+import colors from '../constants/colors';
+
+
 
 
 const fetchArticles = async () => {
   try {
-    const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
+    const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
     const response = await fetch(url);
     const json = await response.json();
 
@@ -102,29 +106,29 @@ const ArticleItem = React.memo(({ item }) => {
   );
 });
 
-export default function Home() {
-  const [articles, setArticles] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  const [searchText, setSearchText] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-
-  useEffect(() => {
-    const loadArticles = async () => {
-      const fetchedArticles = await fetchArticles();
-      setArticles(fetchedArticles);
-      setLoading(false);
+  export default function Home() {
+    const [articles, setArticles] = useState([]);
+    const [isLoading, setLoading] = useState(true);
+    const [searchText, setSearchText] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+  
+    useEffect(() => {
+      const loadArticles = async () => {
+        const fetchedArticles = await fetchArticles();
+        setArticles(fetchedArticles);
+        setLoading(false);
+      };
+      loadArticles();
+    }, []);
+  
+    const handleSearch = (text) => {
+      setSearchText(text);
+      // Tìm kiếm trong danh sách bài viết theo tiêu đề hoặc mô tả
+      const filteredArticles = articles.filter((item) =>
+        item.title.toLowerCase().includes(text.toLowerCase()) || item.description.toLowerCase().includes(text.toLowerCase())
+      );
+      setSearchResults(filteredArticles);
     };
-    loadArticles();
-  }, []);
-
-  const handleSearch = (text) => {
-    setSearchText(text);
-    // Tìm kiếm trong danh sách bài viết theo tiêu đề hoặc mô tả
-    const filteredArticles = articles.filter((item) =>
-      item.title.toLowerCase().includes(text.toLowerCase()) || item.description.toLowerCase().includes(text.toLowerCase())
-    );
-    setSearchResults(filteredArticles);
-  };
 
   const clearSearchResults = () => {
     setSearchText('');
@@ -224,4 +228,4 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#666',
   },
-});
+})

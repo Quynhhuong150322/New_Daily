@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b000d00a-5313-414c-8850-8ecc45fd1e6a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102191659.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102192135.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102193626.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102193657.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102195014.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102195529.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102195758.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102200158.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102234016.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102234215.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102235002.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102235028.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102235144.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102235207.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102235324.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102235628.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102235658.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102235756.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102235830.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240102235958.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103000037.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103000115.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103000235.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103000716.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103000743.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103000756.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103000903.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103000918.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103000940.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103000950.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103001132.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103001303.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103001347.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103001426.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103001442.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103001502.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103001524.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103001550.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103001947.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103002041.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103002134.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103002227.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103002401.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103002441.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103002451.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003057.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003253.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003306.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003325.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003400.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003412.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003428.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003507.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003552.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003825.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003838.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003916.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003924.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103003949.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103004624.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103004828.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/components/HorizontalMenu_20240103005244.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/constants/data_20240102184740.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/constants/data_20240102185444.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/constants/data_20240102234501.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/constants/data_20240102234900.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/constants/data_20240102235144.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/constants/data_20240103003057.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102185550.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102190659.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102191214.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102192709.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102193434.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102194518.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102195209.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102195506.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102200215.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102200228.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102200322.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102215302.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223027.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223129.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223301.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223326.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223334.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223409.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223520.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223626.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223637.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223655.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223715.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223726.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223742.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223752.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223808.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223817.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223827.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223838.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223851.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223900.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223907.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223930.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223938.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102223952.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224013.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224027.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224034.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224039.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224052.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224102.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224108.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224408.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224429.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224511.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224547.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224722.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224755.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102224854.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102225434.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102225447.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102225622.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102225846.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102225937.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102230111.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102230128.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102230133.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102230205.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102230219.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102231128.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102231144.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102231747.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102231804.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102232545.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102232609.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102232832.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102232903.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240102233018.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103000301.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103003057.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103003122.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103003144.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103003201.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103003219.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103003253.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103004047.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103004221.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103004317.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103005659.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103005739.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103005818.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103005901.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103005929.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103010030.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103010117.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103010551.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103010618.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103010818.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103010845.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103010929.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103011115.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103011244.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103011326.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103011737.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103011816.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103011841.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103011918.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103011934.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103012005.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103012020.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103012103.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103012210.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103012242.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103012331.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103012402.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103012442.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103013011.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103013157.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103013812.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103013842.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103013906.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103013939.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103013956.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014006.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014011.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014025.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014036.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014245.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014258.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014418.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014444.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014610.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014627.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014659.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103014715.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103020347.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103020353.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103020511.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103020529.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103020619.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103020736.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103020842.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103020905.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103020920.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103021035.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Home_20240103021101.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Search_20240103020103.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Trending_20240103021310.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Trending_20240103021427.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.history/screens/Trending_20240103021442.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/constants/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/HorizontalMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/HorizontalMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/Trending.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Trending.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2aOp88eA9Ji5SdQ0VF5xiebtAJO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b000d00a-5313-414c-8850-8ecc45fd1e6a" name="Changes" comment="" />
+      <created>1704199323408</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704199323408</updated>
+    </task>
+    <servers />
+  </component>
+</project>

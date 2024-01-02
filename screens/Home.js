@@ -9,7 +9,7 @@ import colors from '../constants/colors';
 import HorizontalMenu from '../components/HorizontalMenu';
 import { BookmarkSquareIcon } from "react-native-heroicons/solid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { Alert } from 'react-native';
 
 
 const HomeStack = createStackNavigator();
@@ -77,7 +77,7 @@ const Home = () => {
 // fetch API xu hướng
 const fetchArticles1 = async () => {
     try {
-        const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
+        const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
         const response = await fetch(url);
         const json = await response.json();
         return json.results || [];
@@ -89,7 +89,7 @@ const fetchArticles1 = async () => {
 // Fetch API CarouselArticle
 const fetchArticles2 = async () => {
     try {
-        const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
+        const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
         const response = await fetch(url);
         const json = await response.json();
         return json.results || [];
@@ -161,7 +161,7 @@ const ArticleItem1 = React.memo(({ item }) => {
               JSON.stringify(savedArticlesArray)
             );
             toggleBookmark(true);
-            console.log("Article is bookmarked");
+            Alert.alert( "Đã lưu bài viết!");
           } else {
             // If the article is already bookmarked, remove it from the list
             const updatedSavedArticlesArray = savedArticlesArray.filter(
@@ -172,7 +172,7 @@ const ArticleItem1 = React.memo(({ item }) => {
               JSON.stringify(updatedSavedArticlesArray)
             );
             toggleBookmark(false);
-            console.log("Article is removed from bookmarks");
+            Alert.alert( "Đã bỏ lưu!");
           }
         } catch (error) {
           console.log("Error Saving Article", error);
@@ -189,8 +189,8 @@ const ArticleItem1 = React.memo(({ item }) => {
                         <Text style={styles.authorDate1}>
                             {item.creator || 'Unknown Author'} - {new Date(item.pubDate).toLocaleDateString()}
                         </Text>
-                        <TouchableOpacity style={styles.saveButton1} onPress={handleSaveButtonClick}>
-                            <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
+                        <TouchableOpacity style={styles.saveButton1} onPress={toggleBookmarkAndSave}>
+                            <Ionicons name="bookmark" size={15} color={isBookmarked ? colors.Xanh_dam : 'gray'} />
                         </TouchableOpacity>
                     </View>
                     <View >
@@ -218,12 +218,53 @@ const ArticleItem2 = React.memo(({ item }) => {
         navigation.navigate('Posts', { article });
     };
     const [isSaved, setIsSaved] = useState(false);
-
-    // Hàm xử lý khi nút được click
-    const handleSaveButtonClick = () => {
-        // Đảo ngược trạng thái
+    const [savedArticles, setSavedArticles] = useState([]);
+    const [bookmarkStatus, setBookmarkStatus] = useState([]);
+    const [urlList, setUrlList] = useState([]);
+    const [isBookmarked, toggleBookmark] = useState(false);
+    const handleSaveIconPress = () => {
+        // Khi biểu tượng được nhấp, cập nhật trạng thái
         setIsSaved(!isSaved);
     };
+    const toggleBookmarkAndSave = async () => {
+        try {
+          // Check if News Article is already in Storage
+          const savedArticles = await AsyncStorage.getItem("savedArticles");
+          let savedArticlesArray = savedArticles ? JSON.parse(savedArticles) : [];
+          console.log("Check if the article is already bookmarked");
+    
+          // Check if the article is already in the bookmarked list
+          const isArticleBookmarked = savedArticlesArray.some(
+            (savedArticle) => savedArticle.url === item.url
+          );
+    
+          console.log("Check if the article is already in the bookmarked list");
+    
+          if (!isArticleBookmarked) {
+            // If the article is not bookmarked, add it to the bookmarked list
+            savedArticlesArray.push(item);
+            await AsyncStorage.setItem(
+              "savedArticles",
+              JSON.stringify(savedArticlesArray)
+            );
+            toggleBookmark(true);
+            Alert.alert( "Đã lưu bài viết!");
+          } else {
+            // If the article is already bookmarked, remove it from the list
+            const updatedSavedArticlesArray = savedArticlesArray.filter(
+              (savedArticle) => savedArticle.url !== item.url
+            );
+            await AsyncStorage.setItem(
+              "savedArticles",
+              JSON.stringify(updatedSavedArticlesArray)
+            );
+            toggleBookmark(false);
+            Alert.alert( "Đã bỏ lưu!");
+          }
+        } catch (error) {
+          console.log("Error Saving Article", error);
+        }
+      };
     return (
         <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
             <View style={styles.card2}>
@@ -234,8 +275,8 @@ const ArticleItem2 = React.memo(({ item }) => {
                     <View style={styles.footer2}>
                         <Text style={styles.author2}>{item.creator || 'Unknown Author'}</Text>
                         <Text style={styles.date2}>{new Date(item.pubDate).toLocaleDateString()}</Text>
-                        <TouchableOpacity style={styles.saveButton2} onPress={handleSaveButtonClick}>
-                            <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
+                        <TouchableOpacity style={styles.saveButton1} onPress={toggleBookmarkAndSave}>
+                            <Ionicons name="bookmark" size={15} color={isBookmarked ? colors.Xanh_dam : 'gray'} />
                         </TouchableOpacity>
                     </View>
                 </View>

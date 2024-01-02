@@ -7,6 +7,8 @@ import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { BookmarkSquareIcon } from "react-native-heroicons/solid";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
+import { Alert } from 'react-native';
+
 
 export default function SavedScreen() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
@@ -14,6 +16,8 @@ export default function SavedScreen() {
   const [savedArticles, setSavedArticles] = useState([]);
   const [bookmarkStatus, setBookmarkStatus] = useState([]);
   const [urlList, setUrlList] = useState([]);
+  const [isBookmarked, toggleBookmark] = useState(false);
+
 
   // Function to handle click on an item
   const handleClick = (item) => {
@@ -57,7 +61,7 @@ export default function SavedScreen() {
         const updatedStatus = [...bookmarkStatus];
         updatedStatus[index] = true;
         setBookmarkStatus(updatedStatus);
-        console.log("Article is bookmarked");
+        Alert.alert( "Đã lưu bài viết!");
       } else {
         // If the article is already bookmarked, remove it from the list
         const updatedSavedArticlesArray = savedArticlesArray.filter(
@@ -70,7 +74,7 @@ export default function SavedScreen() {
         const updatedStatus = [...bookmarkStatus];
         updatedStatus[index] = false;
         setBookmarkStatus(updatedStatus);
-        console.log("Article is removed from bookmarks");
+        Alert.alert( "Đã bỏ lưu!");
       }
     } catch (error) {
       console.log("Error Saving/Removing Article", error);
@@ -124,14 +128,10 @@ export default function SavedScreen() {
             <View style={styles.footer}>
               <Text style={styles.date}>{new Date(item.pubDate).toLocaleDateString()}</Text>
               <Text style={styles.author}>{item.creator || 'Unknown Author'}</Text>
+              <TouchableOpacity style={styles.saveButton1} onPress={toggleBookmarkAndSave}>
+                            <Ionicons name="bookmark" size={15} color={isBookmarked ? colors.Xanh_dam : 'gray'} />
+              </TouchableOpacity>
             </View>
-            <View>
-            <TouchableOpacity
-              onPress={() => toggleBookmarkAndSave(item, index)}
-            >
-              <BookmarkSquareIcon color="blue" />
-            </TouchableOpacity>
-          </View>
           </View>
         </View>
       </TouchableOpacity>
