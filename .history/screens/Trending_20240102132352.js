@@ -14,8 +14,8 @@ const fetchArticles = async () => {
         // const filteredArticles = json.results.filter((item) => {
         // return item.image_url && item.creator && item.content;
         // });
-        // return filteredArticles || [];
-        return json.results || [];
+
+        return filteredArticles || [];
     } catch (error) {
         console.error('Fetch error: ', error);
         return [];

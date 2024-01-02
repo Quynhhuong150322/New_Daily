@@ -232,17 +232,16 @@ const styles = StyleSheet.create({
     },
     carouselItem: {
         height: 200,
-        width: 350,
+        width: 500,
         justifyContent: 'flex-end',
         padding: 10,
         alignItems: 'center',
-        marginBottom: 5,
+        marginBottom: 10,
 
     },
     carouselImage: {
         flex: 1,
         resizeMode: 'cover',
-        width: 350,
     },
     carouselCategory: {
         color: 'white',
