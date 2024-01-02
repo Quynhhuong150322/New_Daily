@@ -175,12 +175,12 @@ const ArticleItem2 = React.memo(({ item }) => {
         <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
             <View style={styles.card2}>
                 <Image source={{ uri: item.image_url || defaultImage }} style={styles.image2} />
-                <View style={styles.contentContainer2}>
+                <View style={styles.contentContainer}>
                     <Text style={styles.title2}>{item.title}</Text>
                     <Text style={styles.description2}>{item.description}</Text>
                     <View style={styles.footer2}>
-                        <Text style={styles.author2}>{item.creator || 'Unknown Author'}</Text>
                         <Text style={styles.date2}>{new Date(item.pubDate).toLocaleDateString()}</Text>
+                        <Text style={styles.author2}>{item.creator || 'Unknown Author'}</Text>
                         <TouchableOpacity style={styles.saveButton2} onPress={handleSaveButtonClick}>
                             <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
                         </TouchableOpacity>
@@ -380,36 +380,43 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 2,
+        flexDirection: 'row', // Hiển thị theo chiều ngang
+        alignItems: 'center', // Căn giữa dọc
+        height: 150, // Độ cao 100px
     },
     image2: {
-        paddingTop: 15,
-        width: '100%',
-        height: 200,
+        width: '25%', // Chiếm 1/3 chiều ngang
+        height: '100%', // Độ cao 100% của card
     },
     contentContainer2: {
         padding: 16,
+        flex: 1, // Để nội dung linh hoạt theo chiều ngang
     },
     title2: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: 'bold',
         marginBottom: 8,
+        textAlign: 'justify'
     },
     description2: {
-        fontSize: 14,
+        fontSize: 9,
         color: '#666',
         marginBottom: 8,
+        textAlign: 'justify',
+        numberOfLines: 2, // Giới hạn số dòng hiển thị
+        ellipsizeMode: 'tail', // Hiển thị '...' nếu quá dài
     },
     footer2: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 8,
+        marginTop: 2,
     },
     date2: {
-        fontSize: 12,
+        fontSize: 10,
         color: '#666',
     },
     author2: {
-        fontSize: 12,
+        fontSize: 10,
         color: '#666',
     },
     carouselItem: {

@@ -175,12 +175,12 @@ const ArticleItem2 = React.memo(({ item }) => {
         <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
             <View style={styles.card2}>
                 <Image source={{ uri: item.image_url || defaultImage }} style={styles.image2} />
-                <View style={styles.contentContainer2}>
+                <View style={styles.contentContainer}>
                     <Text style={styles.title2}>{item.title}</Text>
                     <Text style={styles.description2}>{item.description}</Text>
                     <View style={styles.footer2}>
-                        <Text style={styles.author2}>{item.creator || 'Unknown Author'}</Text>
                         <Text style={styles.date2}>{new Date(item.pubDate).toLocaleDateString()}</Text>
+                        <Text style={styles.author2}>{item.creator || 'Unknown Author'}</Text>
                         <TouchableOpacity style={styles.saveButton2} onPress={handleSaveButtonClick}>
                             <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
                         </TouchableOpacity>

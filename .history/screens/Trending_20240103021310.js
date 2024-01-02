@@ -3,7 +3,6 @@ import { ActivityIndicator, FlatList, Text, View, StyleSheet, ScrollView } from 
 import { createStackNavigator } from '@react-navigation/stack';
 import { Image, TouchableOpacity, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import colors from '../constants/colors';
 
 const fetchArticles = async () => {
     try {
@@ -67,43 +66,6 @@ export default function Home() {
     };
     return (
         <View style={styles.container}>
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginTop: 10,
-                marginBottom: 10
-            }}>
-                <View style={{
-                    height: 30,
-                    width: 5,
-                    backgroundColor: colors.Xanh_dam,
-                }} />
-                <Text style={{
-                    fontSize: 18,
-                    marginLeft: 5,
-                    color: colors.Xanh_dam,
-                    fontWeight: 'bold',
-                }}>Tin mới nhất</Text>
-            </View>
-            <HorizontalMenu currentCategory={currentCategory} onCategoryChange={handleCategoryChange} />
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginTop: 10,
-                marginBottom: 10
-            }}>
-                <View style={{
-                    height: 30,
-                    width: 5,
-                    backgroundColor: colors.Xanh_dam,
-                }} />
-                <Text style={{
-                    fontSize: 18,
-                    marginLeft: 5,
-                    color: colors.Xanh_dam,
-                    fontWeight: 'bold',
-                }}>Xu hướng</Text>
-            </View>
             <FlatList
                 data={articles}
                 keyExtractor={(item, index) => item.article_id || index.toString()}

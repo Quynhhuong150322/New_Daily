@@ -175,12 +175,12 @@ const ArticleItem2 = React.memo(({ item }) => {
         <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
             <View style={styles.card2}>
                 <Image source={{ uri: item.image_url || defaultImage }} style={styles.image2} />
-                <View style={styles.contentContainer2}>
+                <View style={styles.contentContainer}>
                     <Text style={styles.title2}>{item.title}</Text>
                     <Text style={styles.description2}>{item.description}</Text>
                     <View style={styles.footer2}>
-                        <Text style={styles.author2}>{item.creator || 'Unknown Author'}</Text>
                         <Text style={styles.date2}>{new Date(item.pubDate).toLocaleDateString()}</Text>
+                        <Text style={styles.author2}>{item.creator || 'Unknown Author'}</Text>
                         <TouchableOpacity style={styles.saveButton2} onPress={handleSaveButtonClick}>
                             <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
                         </TouchableOpacity>
@@ -380,9 +380,10 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 2,
+        marginTop: 5,
+        alignItems: 'center',
     },
     image2: {
-        paddingTop: 15,
         width: '100%',
         height: 200,
     },
@@ -393,16 +394,21 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 8,
+        padding: 5,
+
     },
     description2: {
         fontSize: 14,
         color: '#666',
         marginBottom: 8,
+        padding: 5,
     },
     footer2: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 8,
+        paddingLeft: 2,
+        paddingRight: 2,
     },
     date2: {
         fontSize: 12,

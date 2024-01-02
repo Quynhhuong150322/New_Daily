@@ -175,7 +175,7 @@ const ArticleItem2 = React.memo(({ item }) => {
         <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
             <View style={styles.card2}>
                 <Image source={{ uri: item.image_url || defaultImage }} style={styles.image2} />
-                <View style={styles.contentContainer2}>
+                <View style={styles.contentContainer}>
                     <Text style={styles.title2}>{item.title}</Text>
                     <Text style={styles.description2}>{item.description}</Text>
                     <View style={styles.footer2}>
