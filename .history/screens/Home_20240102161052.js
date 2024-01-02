@@ -6,7 +6,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/core';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import colors from '../constants/colors';
-import HorizontalMenu from '../components/HorizontalMenu';
 
 
 
@@ -100,14 +99,12 @@ const CarouselArticle = ({ item }) => {
     };
     return (
         <TouchableOpacity onPress={() => navigateToArticleDetail(item)} style={styles.carouselItem}>
-            <ImageBackground source={{ uri: imageUrl }} style={styles.carouselImage}>
-                <View style={styles.carouselHeader} blurRadius={5}>
-                    <Text style={styles.carouselCategory}>{item.category}</Text>
-                    <Text style={styles.carouselTitle}>{item.title}</Text>
-                    <View style={styles.carouseFooter}>
-                        <Text style={styles.carouselAuthor}>{item.creator || 'Unknown Author'}</Text>
-                        <Text style={styles.carouselDate}>{new Date(item.pubDate).toLocaleDateString()}</Text>
-                    </View>
+            <ImageBackground source={{ uri: imageUrl }} style={styles.carouselImage} blurRadius={10}>
+                <Text style={styles.carouselCategory}>{item.category}</Text>
+                <Text style={styles.carouselTitle}>{item.title}</Text>
+                <View style={styles.carouseFooter}>
+                    <Text style={styles.carouselAuthor}>{item.creator || 'Unknown Author'}</Text>
+                    <Text style={styles.carouselDate}>{new Date(item.pubDate).toLocaleDateString()}</Text>
                 </View>
             </ImageBackground>
         </TouchableOpacity>
@@ -144,8 +141,7 @@ const ArticleItem = React.memo(({ item }) => {
 const HomeScreen = () => {
     const [articles, setArticles] = useState([]);
     const [isLoading, setLoading] = useState(true);
-    const [currentCategory, setCurrentCategory] = useState('all');
-    const [filteredArticles, setFilteredArticles] = useState([]);
+    // const [activeSlide, setActiveSlide] = useState(0);
 
     useEffect(() => {
         const loadArticles = async () => {
@@ -155,19 +151,6 @@ const HomeScreen = () => {
         };
         loadArticles();
     }, []);
-
-    // Hàm để xử lý thay đổi thể loại
-    useEffect(() => {
-        if (currentCategory === 'all') {
-            setFilteredArticles(articles);
-        } else {
-            const filtered = articles.filter((item) => item.category === currentCategory);
-            setFilteredArticles(filtered);
-        }
-    }, [currentCategory, articles]);
-    const handleCategoryChange = (category) => {
-        setCurrentCategory(category);
-    };
 
     if (isLoading) {
         return (
@@ -188,26 +171,6 @@ const HomeScreen = () => {
                     itemWidth={400}
                 // onSnapToItem={(index) => setActiveSlide(index)}
                 />
-                <View style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    marginTop: 10,
-                    marginBottom: 10
-                }}>
-                    <View style={{
-                        height: 30,
-                        width: 5,
-                        backgroundColor: colors.Xanh_dam,
-                    }} />
-                    <Text style={{
-                        fontSize: 18,
-                        marginLeft: 5,
-                        color: colors.Xanh_dam,
-                        fontWeight: 'bold',
-                    }}>Tin mới nhất</Text>
-                </View>
-                <HorizontalMenu currentCategory={currentCategory} onCategoryChange={handleCategoryChange} />
-                {/* Hiển thị danh sách bài viết ở đây */}
                 <FlatList
                     data={articles}
                     keyExtractor={(item, index) => item.article_id || index.toString()}
@@ -274,15 +237,18 @@ const styles = StyleSheet.create({
     carouselItem: {
         height: 200,
         width: 350,
-        justifyContent: 'center', // Căn giữa dọc và ngang
+        justifyContent: 'flex-end',
+        // padding: 10,
         alignItems: 'center',
         marginBottom: 5,
-        marginLeft: 8
+        // paddingLeft: 10,
+
+
     },
     carouselImage: {
         flex: 1,
         resizeMode: 'cover',
-        width: '100 % ',
+        width: 350,
     },
     carouselCategory: {
         color: 'white',
@@ -314,10 +280,6 @@ const styles = StyleSheet.create({
         marginTop: 8,
         paddingRight: 10,
         paddingLeft: 10
-    },
-    carouselHeader: {
-        backgroundColor: 'rgba(255, 255, 255, 0.6)',
-
     }
 });
 

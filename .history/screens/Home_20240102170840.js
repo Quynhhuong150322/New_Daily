@@ -144,8 +144,8 @@ const ArticleItem = React.memo(({ item }) => {
 const HomeScreen = () => {
     const [articles, setArticles] = useState([]);
     const [isLoading, setLoading] = useState(true);
+    // const [activeSlide, setActiveSlide] = useState(0);
     const [currentCategory, setCurrentCategory] = useState('all');
-    const [filteredArticles, setFilteredArticles] = useState([]);
 
     useEffect(() => {
         const loadArticles = async () => {
@@ -157,14 +157,6 @@ const HomeScreen = () => {
     }, []);
 
     // Hàm để xử lý thay đổi thể loại
-    useEffect(() => {
-        if (currentCategory === 'all') {
-            setFilteredArticles(articles);
-        } else {
-            const filtered = articles.filter((item) => item.category === currentCategory);
-            setFilteredArticles(filtered);
-        }
-    }, [currentCategory, articles]);
     const handleCategoryChange = (category) => {
         setCurrentCategory(category);
     };
@@ -207,7 +199,6 @@ const HomeScreen = () => {
                     }}>Tin mới nhất</Text>
                 </View>
                 <HorizontalMenu currentCategory={currentCategory} onCategoryChange={handleCategoryChange} />
-                {/* Hiển thị danh sách bài viết ở đây */}
                 <FlatList
                     data={articles}
                     keyExtractor={(item, index) => item.article_id || index.toString()}
