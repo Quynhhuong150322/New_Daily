@@ -175,12 +175,12 @@ const ArticleItem2 = React.memo(({ item }) => {
         <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
             <View style={styles.card2}>
                 <Image source={{ uri: item.image_url || defaultImage }} style={styles.image2} />
-                <View style={styles.contentContainer2}>
+                <View style={styles.contentContainer}>
                     <Text style={styles.title2}>{item.title}</Text>
                     <Text style={styles.description2}>{item.description}</Text>
                     <View style={styles.footer2}>
-                        <Text style={styles.author2}>{item.creator || 'Unknown Author'}</Text>
                         <Text style={styles.date2}>{new Date(item.pubDate).toLocaleDateString()}</Text>
+                        <Text style={styles.author2}>{item.creator || 'Unknown Author'}</Text>
                         <TouchableOpacity style={styles.saveButton2} onPress={handleSaveButtonClick}>
                             <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
                         </TouchableOpacity>
@@ -356,7 +356,6 @@ const styles = StyleSheet.create({
     title1: {
         fontSize: 12,
         fontWeight: 'bold',
-        padding: 2,
         // textAlign: 'justify',
     },
     authorDate1: {
@@ -380,9 +379,10 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 2,
+        marginTop: 5,
+        alignItems: 'center',
     },
     image2: {
-        paddingTop: 15,
         width: '100%',
         height: 200,
     },
@@ -393,6 +393,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 8,
+        padding: 2, // Điều chỉnh khoảng cách từ viền đến nội dung
     },
     description2: {
         fontSize: 14,
@@ -403,6 +404,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 8,
+        paddingLeft: 2, // Điều chỉnh khoảng cách từ viền trái đến ngày tháng
+        paddingRight: 2, // Điều chỉnh khoảng cách từ viền phải đến icon "bookmark"
     },
     date2: {
         fontSize: 12,

@@ -3,7 +3,6 @@ import { ActivityIndicator, FlatList, Text, View, StyleSheet, ScrollView } from 
 import { createStackNavigator } from '@react-navigation/stack';
 import { Image, TouchableOpacity, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import colors from '../constants/colors';
 
 const fetchArticles = async () => {
     try {
