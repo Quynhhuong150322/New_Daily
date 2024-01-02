@@ -5,7 +5,6 @@ import { Image, TouchableOpacity, ImageBackground } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/core';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import colors from '../constants/colors';
 
 
 
@@ -250,7 +249,7 @@ const styles = StyleSheet.create({
     carouselCategory: {
         color: 'white',
         backgroundColor: 'rgba(0,0,0,0.5)',
-        padding: 10,
+        padding: 5,
         fontSize: 12,
     },
     carouselTitle: {
@@ -258,16 +257,15 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 16,
         padding: 5,
-        paddingLeft: 5,
+        paddingLeft: 5
         // width: 400
-        paddingTop: 50
     },
     carouselAuthor: {
         color: 'white',
         fontSize: 14,
     },
     carouselDate: {
-        color: colors.Den,
+        color: 'white',
         fontSize: 12,
     },
 });
