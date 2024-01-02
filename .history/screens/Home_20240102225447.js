@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/core';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import colors from '../constants/colors';
 import HorizontalMenu from '../components/HorizontalMenu';
-import Swiper from 'react-native-swiper';
+import { SPORTS_API, TECHNOLOGY_API, WORLD_API } from '../constants/data';
 
 
 
@@ -73,34 +73,28 @@ const Home = () => {
         </HomeStack.Navigator>
     );
 }
-// fetch API xu hướng
-const fetchArticles1 = async () => {
+
+const fetchArticles = async () => {
     try {
-        const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
+        const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35731380e0a51b24cc5e9e0c6dc8e7d1b73b8`;
         const response = await fetch(url);
         const json = await response.json();
+
+        // Lọc bài viết không có hình, không có tác giả và không có nội dung
+        // const filteredArticles = json.results.filter((item) => {
+        //     return item.image_url && item.creator && item.content;
+        // });
+        // return filteredArticles || [];
         return json.results || [];
     } catch (error) {
         console.error('Fetch error: ', error);
         return [];
     }
 };
-// Fetch API CarouselArticle
-const fetchArticles2 = async () => {
-    try {
-        const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
-        const response = await fetch(url);
-        const json = await response.json();
-        return json.results || [];
-    } catch (error) {
-        console.error('Fetch error: ', error);
-        return [];
-    }
-};
-const CarouselArticle = ({ item }) => {
+const CarouselArticle = ({ item1 }) => {
     const navigation = useNavigation();
     const defaultImage = 'https://nhadaututhanhcong.com/wp-content/uploads/2022/04/news-3.jpg';
-    const imageUrl = item.image_url || defaultImage;
+    const imageUrl = item1.image_url || defaultImage;
 
     const navigateToArticleDetail = (article) => {
         navigation.navigate('Posts', { article });
@@ -122,98 +116,42 @@ const CarouselArticle = ({ item }) => {
 };
 
 
-const ArticleItem1 = React.memo(({ item }) => {
+
+const ArticleItem = React.memo(({ item }) => {
     const navigation = useNavigation();
     const defaultImage = 'https://nhadaututhanhcong.com/wp-content/uploads/2022/04/news-3.jpg';
 
     const navigateToArticleDetail = (article) => {
         navigation.navigate('Posts', { article });
     };
-    const [isSaved, setIsSaved] = useState(false);
 
-    // Hàm xử lý khi nút được click
-    const handleSaveButtonClick = () => {
-        // Đảo ngược trạng thái
-        setIsSaved(!isSaved);
-    };
     return (
         <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
-            <View style={styles.card1}>
-                <Image source={{ uri: item.image_url || defaultImage }} style={styles.image1} />
-                <View style={styles.contentContainer1}>
-                    <Text style={styles.category1}>Thể loại</Text>
-                    <Text style={styles.title1}>{item.title}</Text>
-                    <View style={styles.DateSave1}>
-                        <Text style={styles.authorDate1}>
-                            {item.creator || 'Unknown Author'} - {new Date(item.pubDate).toLocaleDateString()}
-                        </Text>
-                        <TouchableOpacity style={styles.saveButton1} onPress={handleSaveButtonClick}>
-                            <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </View>
-        </TouchableOpacity>
-    );
-});
-
-const ArticleItem2 = React.memo(({ item }) => {
-    const navigation = useNavigation();
-    const defaultImage = 'https://nhadaututhanhcong.com/wp-content/uploads/2022/04/news-3.jpg';
-
-    const navigateToArticleDetail = (article) => {
-        navigation.navigate('Posts', { article });
-    };
-    const [isSaved, setIsSaved] = useState(false);
-
-    // Hàm xử lý khi nút được click
-    const handleSaveButtonClick = () => {
-        // Đảo ngược trạng thái
-        setIsSaved(!isSaved);
-    };
-    return (
-        <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
-            <View style={styles.card2}>
-                <Image source={{ uri: item.image_url || defaultImage }} style={styles.image2} />
+            <View style={styles.card}>
+                <Image source={{ uri: item.image_url || defaultImage }} style={styles.image} />
                 <View style={styles.contentContainer}>
-                    <Text style={styles.title2}>{item.title}</Text>
-                    <Text style={styles.description2}>{item.description}</Text>
-                    <View style={styles.footer2}>
-                        <Text style={styles.date2}>{new Date(item.pubDate).toLocaleDateString()}</Text>
-                        <Text style={styles.author2}>{item.creator || 'Unknown Author'}</Text>
-                        <TouchableOpacity style={styles.saveButton2} onPress={handleSaveButtonClick}>
-                            <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
-                        </TouchableOpacity>
+                    <Text style={styles.title}>{item.title}</Text>
+                    <Text style={styles.description}>{item.description}</Text>
+                    <View style={styles.footer}>
+                        <Text style={styles.date}>{new Date(item.pubDate).toLocaleDateString()}</Text>
+                        <Text style={styles.author}>{item.creator || 'Unknown Author'}</Text>
                     </View>
                 </View>
             </View>
         </TouchableOpacity>
     );
 });
-
-
-
 
 const HomeScreen = () => {
-    const [articles1, setArticles1] = useState([]);
-    const [articles2, setArticles2] = useState([]);
+    const [articles, setArticles] = useState([]);
     const [isLoading, setLoading] = useState(true);
     // const [activeSlide, setActiveSlide] = useState(0);
     const [currentCategory, setCurrentCategory] = useState('all');
 
     useEffect(() => {
         const loadArticles = async () => {
-            const fetchedArticles1 = await fetchArticles1()
-            setArticles1(fetchedArticles1)
-            setLoading(false);
-        };
-        loadArticles();
-    }, []);
-
-    useEffect(() => {
-        const loadArticles = async () => {
-            const fetchedArticles2 = await fetchArticles2()
-            setArticles2(fetchedArticles2)
+            const fetchedArticles = await fetchArticles()
+            setArticles(fetchedArticles)
             setLoading(false);
         };
         loadArticles();
@@ -237,7 +175,7 @@ const HomeScreen = () => {
             <View style={styles.container}>
                 {/* Carousel for featured articles */}
                 <Carousel
-                    data={articles1}
+                    data={articles}
                     renderItem={({ item }) => <CarouselArticle item={item} />}
                     sliderWidth={350}
                     itemWidth={400}
@@ -262,57 +200,11 @@ const HomeScreen = () => {
                     }}>Tin mới nhất</Text>
                 </View>
                 <HorizontalMenu currentCategory={currentCategory} onCategoryChange={handleCategoryChange} />
-                <View style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    marginTop: 10,
-                    marginBottom: 10
-                }}>
-                    <View style={{
-                        height: 30,
-                        width: 5,
-                        backgroundColor: colors.Xanh_dam,
-                    }} />
-                    <Text style={{
-                        fontSize: 18,
-                        marginLeft: 5,
-                        color: colors.Xanh_dam,
-                        fontWeight: 'bold',
-                    }}>Xu hướng</Text>
-                </View>
-
+                {/* Hiển thị danh sách bài viết ở đây */}
                 <FlatList
-                    data={articles1}
+                    data={articles}
                     keyExtractor={(item, index) => item.article_id || index.toString()}
-                    renderItem={({ item }) => <ArticleItem1 item={item} />}
-                    initialNumToRender={20}
-                    maxToRenderPerBatch={20}
-                    windowSize={21}
-                    horizontal
-                />
-
-                <View style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    marginTop: 10,
-                    marginBottom: 10
-                }}>
-                    <View style={{
-                        height: 30,
-                        width: 5,
-                        backgroundColor: colors.Xanh_dam,
-                    }} />
-                    <Text style={{
-                        fontSize: 18,
-                        marginLeft: 5,
-                        color: colors.Xanh_dam,
-                        fontWeight: 'bold',
-                    }}>Đề xuất</Text>
-                </View>
-                <FlatList
-                    data={articles2}
-                    keyExtractor={(item, index) => item.article_id || index.toString()}
-                    renderItem={({ item }) => <ArticleItem2 item={item} />}
+                    renderItem={({ item }) => <ArticleItem item={item} />}
                     initialNumToRender={20}
                     maxToRenderPerBatch={20}
                     windowSize={21}
@@ -322,53 +214,14 @@ const HomeScreen = () => {
     )
 };
 
+// Định nghĩa các styles cho components
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 10,
+        // backgroundColor: '#f0f0f0', 
     },
-    card1: {
-        backgroundColor: 'white',
-        borderRadius: 8,
-        overflow: 'hidden',
-        marginBottom: 16,
-        elevation: 3,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
-        marginTop: 5,
-        width: 140,
-        height: 250,
-        marginLeft: 5,
-    },
-    image1: {
-        width: '100%',
-        height: 100,
-    },
-    contentContainer1: {
-        padding: 10, // Điều chỉnh khoảng cách từ viền đến nội dung
-    },
-    category1: {
-        fontSize: 10,
-        color: colors.Xanh_dam,
-    },
-    title1: {
-        fontSize: 12,
-        fontWeight: 'bold',
-        // textAlign: 'justify',
-    },
-    authorDate1: {
-        fontSize: 9,
-        color: '#666',
-    },
-    DateSave1: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 2,
-    },
-    //
-    card2: {
+    card: {
         backgroundColor: 'white',
         borderRadius: 8,
         overflow: 'hidden',
@@ -381,51 +234,49 @@ const styles = StyleSheet.create({
         marginTop: 5,
         alignItems: 'center',
     },
-    image2: {
+    image: {
         width: '100%',
         height: 200,
     },
-    contentContainer2: {
+    contentContainer: {
         padding: 16,
     },
-    title2: {
+    title: {
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 8,
-        padding: 2, // Điều chỉnh khoảng cách từ viền đến nội dung
     },
-    description2: {
+    description: {
         fontSize: 14,
         color: '#666',
         marginBottom: 8,
     },
-    footer2: {
+    footer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 8,
-        paddingLeft: 2, // Điều chỉnh khoảng cách từ viền trái đến ngày tháng
-        paddingRight: 2, // Điều chỉnh khoảng cách từ viền phải đến icon "bookmark"
     },
-    date2: {
+    date: {
         fontSize: 12,
         color: '#666',
     },
-    author2: {
+    author: {
         fontSize: 12,
         color: '#666',
     },
     carouselItem: {
         height: 200,
         width: 350,
-        justifyContent: 'center',
+        justifyContent: 'center', // Căn giữa dọc và ngang
         alignItems: 'center',
         marginBottom: 5,
-        marginLeft: 8,
+        marginLeft: 8
+
     },
     carouselImage: {
         flex: 1,
         resizeMode: 'cover',
-        width: '100%',
+        width: '100 % ',
     },
     carouselCategory: {
         color: 'white',
@@ -439,6 +290,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         padding: 5,
         paddingLeft: 5,
+        // width: 400
+        // paddingTop: 90
     },
     carouselAuthor: {
         color: 'white',
@@ -449,16 +302,17 @@ const styles = StyleSheet.create({
         color: colors.Den,
         fontSize: 14,
     },
-    carouselFooter: {
+    carouseFooter: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 8,
         paddingRight: 10,
-        paddingLeft: 10,
+        paddingLeft: 10
     },
     carouselHeader: {
         backgroundColor: 'rgba(255, 255, 255, 0.6)',
-    },
+
+    }
 });
 
 

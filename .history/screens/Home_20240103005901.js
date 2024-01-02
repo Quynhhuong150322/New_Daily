@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/core';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import colors from '../constants/colors';
 import HorizontalMenu from '../components/HorizontalMenu';
-import Swiper from 'react-native-swiper';
+import { SPORTS_API, TECHNOLOGY_API, WORLD_API } from '../constants/data';
 
 
 
@@ -73,7 +73,7 @@ const Home = () => {
         </HomeStack.Navigator>
     );
 }
-// fetch API xu hướng
+// fetch API CarouselArticle
 const fetchArticles1 = async () => {
     try {
         const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
@@ -85,7 +85,7 @@ const fetchArticles1 = async () => {
         return [];
     }
 };
-// Fetch API CarouselArticle
+// Fetch API xu hướng
 const fetchArticles2 = async () => {
     try {
         const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
@@ -122,6 +122,7 @@ const CarouselArticle = ({ item }) => {
 };
 
 
+
 const ArticleItem1 = React.memo(({ item }) => {
     const navigation = useNavigation();
     const defaultImage = 'https://nhadaututhanhcong.com/wp-content/uploads/2022/04/news-3.jpg';
@@ -141,12 +142,11 @@ const ArticleItem1 = React.memo(({ item }) => {
             <View style={styles.card1}>
                 <Image source={{ uri: item.image_url || defaultImage }} style={styles.image1} />
                 <View style={styles.contentContainer1}>
-                    <Text style={styles.category1}>Thể loại</Text>
                     <Text style={styles.title1}>{item.title}</Text>
-                    <View style={styles.DateSave1}>
-                        <Text style={styles.authorDate1}>
-                            {item.creator || 'Unknown Author'} - {new Date(item.pubDate).toLocaleDateString()}
-                        </Text>
+                    <Text style={styles.description1}>{item.description}</Text>
+                    <View style={styles.footer1}>
+                        <Text style={styles.date1}>{new Date(item.pubDate).toLocaleDateString()}</Text>
+                        <Text style={styles.author1}>{item.creator || 'Unknown Author'}</Text>
                         <TouchableOpacity style={styles.saveButton1} onPress={handleSaveButtonClick}>
                             <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
                         </TouchableOpacity>
@@ -280,17 +280,14 @@ const HomeScreen = () => {
                         fontWeight: 'bold',
                     }}>Xu hướng</Text>
                 </View>
-
                 <FlatList
-                    data={articles1}
+                    data={articles2}
                     keyExtractor={(item, index) => item.article_id || index.toString()}
                     renderItem={({ item }) => <ArticleItem1 item={item} />}
                     initialNumToRender={20}
                     maxToRenderPerBatch={20}
                     windowSize={21}
-                    horizontal
                 />
-
                 <View style={{
                     flexDirection: 'row',
                     alignItems: 'center',
@@ -310,7 +307,7 @@ const HomeScreen = () => {
                     }}>Đề xuất</Text>
                 </View>
                 <FlatList
-                    data={articles2}
+                    data={articles1}
                     keyExtractor={(item, index) => item.article_id || index.toString()}
                     renderItem={({ item }) => <ArticleItem2 item={item} />}
                     initialNumToRender={20}
@@ -322,10 +319,12 @@ const HomeScreen = () => {
     )
 };
 
+// Định nghĩa các styles cho components
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 10,
+        // backgroundColor: '#f0f0f0', 
     },
     card1: {
         backgroundColor: 'white',
@@ -338,94 +337,51 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 2,
         marginTop: 5,
-        width: 140,
-        height: 250,
-        marginLeft: 5,
+        alignItems: 'center',
     },
     image1: {
         width: '100%',
-        height: 100,
-    },
-    contentContainer1: {
-        padding: 10, // Điều chỉnh khoảng cách từ viền đến nội dung
-    },
-    category1: {
-        fontSize: 10,
-        color: colors.Xanh_dam,
-    },
-    title1: {
-        fontSize: 12,
-        fontWeight: 'bold',
-        // textAlign: 'justify',
-    },
-    authorDate1: {
-        fontSize: 9,
-        color: '#666',
-    },
-    DateSave1: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 2,
-    },
-    //
-    card2: {
-        backgroundColor: 'white',
-        borderRadius: 8,
-        overflow: 'hidden',
-        marginBottom: 16,
-        elevation: 3,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
-        marginTop: 5,
-        alignItems: 'center',
-    },
-    image2: {
-        width: '100%',
         height: 200,
     },
-    contentContainer2: {
+    contentContainer1: {
         padding: 16,
     },
-    title2: {
+    title1: {
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 8,
-        padding: 2, // Điều chỉnh khoảng cách từ viền đến nội dung
     },
-    description2: {
+    description1: {
         fontSize: 14,
         color: '#666',
         marginBottom: 8,
     },
-    footer2: {
+    footer1: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 8,
-        paddingLeft: 2, // Điều chỉnh khoảng cách từ viền trái đến ngày tháng
-        paddingRight: 2, // Điều chỉnh khoảng cách từ viền phải đến icon "bookmark"
     },
-    date2: {
+    date1: {
         fontSize: 12,
         color: '#666',
     },
-    author2: {
+    author1: {
         fontSize: 12,
         color: '#666',
     },
     carouselItem: {
         height: 200,
         width: 350,
-        justifyContent: 'center',
+        justifyContent: 'center', // Căn giữa dọc và ngang
         alignItems: 'center',
         marginBottom: 5,
-        marginLeft: 8,
+        marginLeft: 8
+
     },
     carouselImage: {
         flex: 1,
         resizeMode: 'cover',
-        width: '100%',
+        width: '100 % ',
     },
     carouselCategory: {
         color: 'white',
@@ -439,6 +395,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         padding: 5,
         paddingLeft: 5,
+        // width: 400
+        // paddingTop: 90
     },
     carouselAuthor: {
         color: 'white',
@@ -449,16 +407,17 @@ const styles = StyleSheet.create({
         color: colors.Den,
         fontSize: 14,
     },
-    carouselFooter: {
+    carouseFooter: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 8,
         paddingRight: 10,
-        paddingLeft: 10,
+        paddingLeft: 10
     },
     carouselHeader: {
         backgroundColor: 'rgba(255, 255, 255, 0.6)',
-    },
+
+    }
 });
 
 

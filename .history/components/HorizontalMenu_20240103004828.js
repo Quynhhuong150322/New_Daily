@@ -5,7 +5,7 @@ import colors from '../constants/colors';
 import { useNavigation } from '@react-navigation/core';
 import { Ionicons } from "@expo/vector-icons";
 
-// 
+
 const fetchArticles3 = async () => {
     try {
         const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
