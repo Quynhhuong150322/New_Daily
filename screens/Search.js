@@ -2,11 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { BookmarkSquareIcon } from "react-native-heroicons/solid";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Alert } from 'react-native';
+import colors from '../constants/colors';
+
+
 
 
 const fetchArticles = async () => {
   try {
-    const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
+    const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
     const response = await fetch(url);
     const json = await response.json();
 
@@ -23,51 +29,106 @@ const fetchArticles = async () => {
 };
 
 const ArticleItem = React.memo(({ item }) => {
-  const navigation = useNavigation();
-  const navigateToArticleDetail = (article) => {
-    navigation.navigate('Posts', { article });
+    const navigation = useNavigation();
+    const navigateToArticleDetail = (article) => {
+      navigation.navigate('Posts', { article });
+    };
+    const [isSaved, setIsSaved] = useState(false);
+    const [isBookmarked, toggleBookmark] = useState(false);
+    const handleSaveIconPress = () => {
+      // Khi biểu tượng được nhấp, cập nhật trạng thái
+      setIsSaved(!isSaved);
   };
+  const toggleBookmarkAndSave = async () => {
+    try {
+      // Check if News Article is already in Storage
+      const savedArticles = await AsyncStorage.getItem("savedArticles");
+      let savedArticlesArray = savedArticles ? JSON.parse(savedArticles) : [];
+      console.log("Check if the article is already bookmarked");
 
-  return (
-    <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
-      <View style={styles.card}>
-        <Image source={{ uri: item.image_url }} style={styles.image} />
-        <View style={styles.contentContainer}>
-          <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.description}>{item.description}</Text>
-          <View style={styles.footer}>
-            <Text style={styles.date}>{new Date(item.pubDate).toLocaleDateString()}</Text>
-            <Text style={styles.author}>{item.creator || 'Unknown Author'}</Text>
+      // Check if the article is already in the bookmarked list
+      const isArticleBookmarked = savedArticlesArray.some(
+        (savedArticle) => savedArticle.url === item.url
+      );
+
+      console.log("Check if the article is already in the bookmarked list");
+
+      if (!isArticleBookmarked) {
+        // If the article is not bookmarked, add it to the bookmarked list
+        savedArticlesArray.push(item);
+        await AsyncStorage.setItem(
+          "savedArticles",
+          JSON.stringify(savedArticlesArray)
+        );
+        toggleBookmark(true);
+        console.log("Article is bookmarked");
+      } else {
+        // If the article is already bookmarked, remove it from the list
+        const updatedSavedArticlesArray = savedArticlesArray.filter(
+          (savedArticle) => savedArticle.url !== item.url
+        );
+        await AsyncStorage.setItem(
+          "savedArticles",
+          JSON.stringify(updatedSavedArticlesArray)
+        );
+        toggleBookmark(false);
+        console.log("Article is removed from bookmarks");
+      }
+    } catch (error) {
+      console.log("Error Saving Article", error);
+    }
+  };
+    return (
+      <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
+        <View style={styles.card}>
+          <Image source={{ uri: item.image_url }} style={styles.image} />
+          <View style={styles.contentContainer}>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.description}>{item.description}</Text>
+            <View style={styles.footer}>
+              <Text style={styles.date}>{new Date(item.pubDate).toLocaleDateString()}</Text>
+              <Text style={styles.author}>{item.creator || 'Unknown Author'}</Text>
+            </View>
+            <View >
+                <TouchableOpacity
+                  onPress={toggleBookmarkAndSave}
+                >
+                  <BookmarkSquareIcon
+                    size={25}
+                    color={isBookmarked ? "green" : "gray"}
+                    strokeWidth={2}
+                  />
+                </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
     </TouchableOpacity>
   );
 });
 
-export default function Home() {
-  const [articles, setArticles] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  const [searchText, setSearchText] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-
-  useEffect(() => {
-    const loadArticles = async () => {
-      const fetchedArticles = await fetchArticles();
-      setArticles(fetchedArticles);
-      setLoading(false);
+  export default function Home() {
+    const [articles, setArticles] = useState([]);
+    const [isLoading, setLoading] = useState(true);
+    const [searchText, setSearchText] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+  
+    useEffect(() => {
+      const loadArticles = async () => {
+        const fetchedArticles = await fetchArticles();
+        setArticles(fetchedArticles);
+        setLoading(false);
+      };
+      loadArticles();
+    }, []);
+  
+    const handleSearch = (text) => {
+      setSearchText(text);
+      // Tìm kiếm trong danh sách bài viết theo tiêu đề hoặc mô tả
+      const filteredArticles = articles.filter((item) =>
+        item.title.toLowerCase().includes(text.toLowerCase()) || item.description.toLowerCase().includes(text.toLowerCase())
+      );
+      setSearchResults(filteredArticles);
     };
-    loadArticles();
-  }, []);
-
-  const handleSearch = (text) => {
-    setSearchText(text);
-    // Tìm kiếm trong danh sách bài viết theo tiêu đề hoặc mô tả
-    const filteredArticles = articles.filter((item) =>
-      item.title.toLowerCase().includes(text.toLowerCase()) || item.description.toLowerCase().includes(text.toLowerCase())
-    );
-    setSearchResults(filteredArticles);
-  };
 
   const clearSearchResults = () => {
     setSearchText('');
@@ -167,4 +228,4 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#666',
   },
-});
+})
