@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View, StyleSheet, ScrollView } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Image, TouchableOpacity, ImageBackground } from 'react-native';
 import colors from '../constants/colors';
 import { useNavigation } from '@react-navigation/core';
 import { Ionicons } from "@expo/vector-icons";
 
-// 
+// Thêm import cho ArticleItem
+// import ArticleItem from './ArticleItem';
+
 const fetchArticles3 = async () => {
     try {
         const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
@@ -114,21 +117,21 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         borderColor: 'black',
         borderWidth: 0.5,
-        // marginBottom: 5
     },
     categoryText: {
         fontWeight: 'normal',
         color: 'black',
     },
     selectedCategoryButton: {
-        backgroundColor: colors.Xanh_dam,
+        backgroundColor: colors.Xanh_dam, // Màu xanh khi được chọn
     },
     selectedCategoryText: {
-        color: 'white',
+        color: 'white', // Màu trắng cho chữ khi được chọn
     },
     container: {
         flex: 1,
         padding: 10,
+        // backgroundColor: '#f0f0f0', 
     },
     card: {
         backgroundColor: 'white',

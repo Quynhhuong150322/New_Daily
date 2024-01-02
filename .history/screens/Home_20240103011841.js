@@ -73,7 +73,7 @@ const Home = () => {
         </HomeStack.Navigator>
     );
 }
-// fetch API xu hướng
+// fetch API CarouselArticle
 const fetchArticles1 = async () => {
     try {
         const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
@@ -85,7 +85,7 @@ const fetchArticles1 = async () => {
         return [];
     }
 };
-// Fetch API CarouselArticle
+// Fetch API xu hướng
 const fetchArticles2 = async () => {
     try {
         const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
@@ -143,14 +143,12 @@ const ArticleItem1 = React.memo(({ item }) => {
                 <View style={styles.contentContainer1}>
                     <Text style={styles.category1}>Thể loại</Text>
                     <Text style={styles.title1}>{item.title}</Text>
-                    <View style={styles.DateSave1}>
-                        <Text style={styles.authorDate1}>
-                            {item.creator || 'Unknown Author'} - {new Date(item.pubDate).toLocaleDateString()}
-                        </Text>
-                        <TouchableOpacity style={styles.saveButton1} onPress={handleSaveButtonClick}>
-                            <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
-                        </TouchableOpacity>
-                    </View>
+                    <Text style={styles.authorDate1}>
+                        {item.creator || 'Unknown Author'} - {new Date(item.pubDate).toLocaleDateString()}
+                    </Text>
+                    <TouchableOpacity style={styles.saveButton1} onPress={handleSaveButtonClick}>
+                        <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
+                    </TouchableOpacity>
                 </View>
             </View>
         </TouchableOpacity>
@@ -282,7 +280,7 @@ const HomeScreen = () => {
                 </View>
 
                 <FlatList
-                    data={articles1}
+                    data={articles2}
                     keyExtractor={(item, index) => item.article_id || index.toString()}
                     renderItem={({ item }) => <ArticleItem1 item={item} />}
                     initialNumToRender={20}
@@ -310,7 +308,7 @@ const HomeScreen = () => {
                     }}>Đề xuất</Text>
                 </View>
                 <FlatList
-                    data={articles2}
+                    data={articles1}
                     keyExtractor={(item, index) => item.article_id || index.toString()}
                     renderItem={({ item }) => <ArticleItem2 item={item} />}
                     initialNumToRender={20}
@@ -322,10 +320,12 @@ const HomeScreen = () => {
     )
 };
 
+// Định nghĩa các styles cho components
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 10,
+        // backgroundColor: '#f0f0f0', 
     },
     card1: {
         backgroundColor: 'white',
@@ -338,36 +338,37 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 2,
         marginTop: 5,
-        width: 140,
-        height: 250,
-        marginLeft: 5,
+        width: 133, // Độ rộng 133px
+        height: 200, // Độ cao 165px
     },
     image1: {
         width: '100%',
-        height: 100,
+        height: 100, // Độ cao 100px
     },
     contentContainer1: {
-        padding: 10, // Điều chỉnh khoảng cách từ viền đến nội dung
+        padding: 10,
     },
     category1: {
-        fontSize: 10,
-        color: colors.Xanh_dam,
+        fontSize: 12,
+        color: colors.Xanh_dam, // Màu xanh đậm cho thể loại
+        marginBottom: 5,
     },
     title1: {
-        fontSize: 12,
+        fontSize: 14,
         fontWeight: 'bold',
-        // textAlign: 'justify',
+        marginBottom: 5,
     },
     authorDate1: {
-        fontSize: 9,
+        fontSize: 12,
         color: '#666',
+        marginBottom: 5,
     },
-    DateSave1: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 2,
+    saveButton1: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
     },
-    //
+    //Đề xuất 
     card2: {
         backgroundColor: 'white',
         borderRadius: 8,
@@ -385,14 +386,13 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 200,
     },
-    contentContainer2: {
+    contentContainer1: {
         padding: 16,
     },
     title2: {
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 8,
-        padding: 2, // Điều chỉnh khoảng cách từ viền đến nội dung
     },
     description2: {
         fontSize: 14,
@@ -403,8 +403,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 8,
-        paddingLeft: 2, // Điều chỉnh khoảng cách từ viền trái đến ngày tháng
-        paddingRight: 2, // Điều chỉnh khoảng cách từ viền phải đến icon "bookmark"
     },
     date2: {
         fontSize: 12,
@@ -417,15 +415,16 @@ const styles = StyleSheet.create({
     carouselItem: {
         height: 200,
         width: 350,
-        justifyContent: 'center',
+        justifyContent: 'center', // Căn giữa dọc và ngang
         alignItems: 'center',
         marginBottom: 5,
-        marginLeft: 8,
+        marginLeft: 8
+
     },
     carouselImage: {
         flex: 1,
         resizeMode: 'cover',
-        width: '100%',
+        width: '100 % ',
     },
     carouselCategory: {
         color: 'white',
@@ -439,6 +438,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         padding: 5,
         paddingLeft: 5,
+        // width: 400
+        // paddingTop: 90
     },
     carouselAuthor: {
         color: 'white',
@@ -449,16 +450,17 @@ const styles = StyleSheet.create({
         color: colors.Den,
         fontSize: 14,
     },
-    carouselFooter: {
+    carouseFooter: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 8,
         paddingRight: 10,
-        paddingLeft: 10,
+        paddingLeft: 10
     },
     carouselHeader: {
         backgroundColor: 'rgba(255, 255, 255, 0.6)',
-    },
+
+    }
 });
 
 

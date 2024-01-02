@@ -356,11 +356,19 @@ const styles = StyleSheet.create({
     title1: {
         fontSize: 12,
         fontWeight: 'bold',
-        // textAlign: 'justify',
+        textAlign: 'justify',
     },
     authorDate1: {
         fontSize: 9,
         color: '#666',
+        position: 'absolute',
+        // bottom: -20,
+        left: 10, // Điều chỉnh khoảng cách từ viền trái đến ngày tháng
+    },
+    saveButton1: {
+        // position: 'absolute',
+        // bottom: -10,
+        // right: 10,
     },
     DateSave1: {
         flexDirection: 'row',

@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View, StyleSheet, ScrollView } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Image, TouchableOpacity, ImageBackground } from 'react-native';
 import colors from '../constants/colors';
 import { useNavigation } from '@react-navigation/core';
 import { Ionicons } from "@expo/vector-icons";
 
-// 
+// Thêm import cho ArticleItem
+// import ArticleItem from './ArticleItem';
+
 const fetchArticles3 = async () => {
     try {
-        const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
+        const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35731380e0a51b24cc5e9e0c6dc8e7d1b73b8`;
         const response = await fetch(url);
         const json = await response.json();
         return json.results || [];
@@ -25,14 +28,6 @@ const ArticleItem = React.memo(({ item }) => {
     const navigateToArticleDetail = (article) => {
         navigation.navigate('Posts', { article });
     };
-    const [isSaved, setIsSaved] = useState(false);
-
-    // Hàm xử lý khi nút được click
-    const handleSaveButtonClick = () => {
-        // Đảo ngược trạng thái
-        setIsSaved(!isSaved);
-    };
-
 
     return (
         <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
@@ -44,8 +39,8 @@ const ArticleItem = React.memo(({ item }) => {
                     <View style={styles.footer}>
                         <Text style={styles.author}>{item.creator || 'Unknown Author'}</Text>
                         <Text style={styles.date}>{new Date(item.pubDate).toLocaleDateString()}</Text>
-                        <TouchableOpacity style={styles.saveButton} onPress={handleSaveButtonClick}>
-                            <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
+                        <TouchableOpacity style={styles.saveButton}>
+                            <FontAwesome name="bookmark" size={24} color="blue" />
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -92,14 +87,18 @@ const HorizontalMenu = ({ currentCategory }) => {
                     </TouchableOpacity>
                 ))}
             </ScrollView>
-            <FlatList
-                data={articles3}
-                keyExtractor={(item, index) => item.article_id || index.toString()}
-                renderItem={({ item }) => <ArticleItem item={item} />}
-                initialNumToRender={20}
-                maxToRenderPerBatch={20}
-                windowSize={21}
-            />
+            {dataLoaded ? (
+                <FlatList
+                    data={articles3}
+                    keyExtractor={(item, index) => item.article_id || index.toString()}
+                    renderItem={({ item }) => <ArticleItem item={item} />}
+                    initialNumToRender={20}
+                    maxToRenderPerBatch={20}
+                    windowSize={21}
+                />
+            ) : (
+                <Text>Loading...</Text>
+            )}
         </View>
     );
 };
@@ -114,21 +113,21 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         borderColor: 'black',
         borderWidth: 0.5,
-        // marginBottom: 5
     },
     categoryText: {
         fontWeight: 'normal',
         color: 'black',
     },
     selectedCategoryButton: {
-        backgroundColor: colors.Xanh_dam,
+        backgroundColor: colors.Xanh_dam, // Màu xanh khi được chọn
     },
     selectedCategoryText: {
-        color: 'white',
+        color: 'white', // Màu trắng cho chữ khi được chọn
     },
     container: {
         flex: 1,
         padding: 10,
+        // backgroundColor: '#f0f0f0', 
     },
     card: {
         backgroundColor: 'white',
@@ -178,11 +177,6 @@ const styles = StyleSheet.create({
     author: {
         fontSize: 10,
         color: '#666',
-    },
-    saveButton: {
-        // position: 'absolute',
-        right: 10,
-
     },
 });
 

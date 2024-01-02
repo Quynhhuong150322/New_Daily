@@ -143,14 +143,12 @@ const ArticleItem1 = React.memo(({ item }) => {
                 <View style={styles.contentContainer1}>
                     <Text style={styles.category1}>Thể loại</Text>
                     <Text style={styles.title1}>{item.title}</Text>
-                    <View style={styles.DateSave1}>
-                        <Text style={styles.authorDate1}>
-                            {item.creator || 'Unknown Author'} - {new Date(item.pubDate).toLocaleDateString()}
-                        </Text>
-                        <TouchableOpacity style={styles.saveButton1} onPress={handleSaveButtonClick}>
-                            <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
-                        </TouchableOpacity>
-                    </View>
+                    <Text style={styles.authorDate1}>
+                        {item.creator || 'Unknown Author'} - {new Date(item.pubDate).toLocaleDateString()}
+                    </Text>
+                    <TouchableOpacity style={styles.saveButton1} onPress={handleSaveButtonClick}>
+                        <Ionicons name="bookmark" size={15} color={isSaved ? colors.Xanh_dam : 'gray'} />
+                    </TouchableOpacity>
                 </View>
             </View>
         </TouchableOpacity>
@@ -356,18 +354,20 @@ const styles = StyleSheet.create({
     title1: {
         fontSize: 12,
         fontWeight: 'bold',
-        // textAlign: 'justify',
+        textAlign: 'justify',
     },
     authorDate1: {
         fontSize: 9,
         color: '#666',
+        position: 'absolute',
+        bottom: 2,
+        // left: 10, // Điều chỉnh khoảng cách từ viền trái đến ngày tháng
     },
-    DateSave1: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 2,
+    saveButton1: {
+        position: 'absolute',
+        bottom: 2,
+        right: 10,
     },
-    //
     card2: {
         backgroundColor: 'white',
         borderRadius: 8,
