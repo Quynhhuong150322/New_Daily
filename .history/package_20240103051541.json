@@ -31,9 +31,9 @@
     "react-native-reanimated-carousel": "^3.5.1",
     "react-native-responsive-screen": "^1.4.2",
     "react-native-snap-carousel": "^3.9.1",
-    "react-native-svg": "^14.1.0",
     "react-native-swiper": "^1.6.0",
-    "react-native-video": "^5.2.1"
+    "react-native-video": "^5.2.1",
+    "react-native-svg": "^14.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
