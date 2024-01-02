@@ -7,7 +7,7 @@ import colors from '../constants/colors';
 
 const fetchArticles = async () => {
     try {
-        const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
+        const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
         const response = await fetch(url);
         const json = await response.json();
 
@@ -67,25 +67,6 @@ export default function Home() {
     };
     return (
         <View style={styles.container}>
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginTop: 10,
-                marginBottom: 10
-            }}>
-                <View style={{
-                    height: 30,
-                    width: 5,
-                    backgroundColor: colors.Xanh_dam,
-                }} />
-                <Text style={{
-                    fontSize: 18,
-                    marginLeft: 5,
-                    color: colors.Xanh_dam,
-                    fontWeight: 'bold',
-                }}>Tin mới nhất</Text>
-            </View>
-            <HorizontalMenu currentCategory={currentCategory} onCategoryChange={handleCategoryChange} />
             <View style={{
                 flexDirection: 'row',
                 alignItems: 'center',

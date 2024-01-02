@@ -76,7 +76,7 @@ const Home = () => {
 // fetch API xu hướng
 const fetchArticles1 = async () => {
     try {
-        const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
+        const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
         const response = await fetch(url);
         const json = await response.json();
         return json.results || [];
@@ -88,7 +88,7 @@ const fetchArticles1 = async () => {
 // Fetch API CarouselArticle
 const fetchArticles2 = async () => {
     try {
-        const url = `https://newsdata.io/api/1/news?country=vi&category=top&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
+        const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
         const response = await fetch(url);
         const json = await response.json();
         return json.results || [];

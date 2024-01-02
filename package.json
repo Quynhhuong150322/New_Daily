@@ -27,7 +27,8 @@
     "react-native-asset": "^2.1.1",
     "react-native-reanimated-carousel": "^3.5.1",
     "react-native-snap-carousel": "^3.9.1",
-    "react-native-swiper": "^1.6.0"
+    "react-native-swiper": "^1.6.0",
+    "react-native-video": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

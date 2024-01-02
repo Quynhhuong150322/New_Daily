@@ -5,10 +5,10 @@ import colors from '../constants/colors';
 import { useNavigation } from '@react-navigation/core';
 import { Ionicons } from "@expo/vector-icons";
 
-// 
+//Mục tất cả  
 const fetchArticles3 = async () => {
     try {
-        const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
+        const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
         const response = await fetch(url);
         const json = await response.json();
         return json.results || [];
@@ -17,7 +17,54 @@ const fetchArticles3 = async () => {
         return [];
     }
 };
-
+//Mục thế giới
+const fetchArticles4 = async () => {
+    try {
+        const url = `https://newsdata.io/api/1/news?country=vi&category=world&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
+        const response = await fetch(url);
+        const json = await response.json();
+        return json.results || [];
+    } catch (error) {
+        console.error('Fetch error: ', error);
+        return [];
+    }
+};
+//Mục thể thao
+const fetchArticles5 = async () => {
+    try {
+        const url = `https://newsdata.io/api/1/news?country=vi&category=sports&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
+        const response = await fetch(url);
+        const json = await response.json();
+        return json.results || [];
+    } catch (error) {
+        console.error('Fetch error: ', error);
+        return [];
+    }
+};
+//Mục công nghệ
+const fetchArticles6 = async () => {
+    try {
+        const url = `https://newsdata.io/api/1/news?country=vi&category=technology&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
+        const response = await fetch(url);
+        const json = await response.json();
+        return json.results || [];
+    } catch (error) {
+        console.error('Fetch error: ', error);
+        return [];
+    }
+};
+//Mục khoa học
+const fetchArticles7 = async () => {
+    try {
+        const url = `https://newsdata.io/api/1/news?country=vi&category=science&apikey=pub_35753955e811433ff394ac5b383366f11207f`;
+        const response = await fetch(url);
+        const json = await response.json();
+        return json.results || [];
+    } catch (error) {
+        console.error('Fetch error: ', error);
+        return [];
+    }
+};
 const ArticleItem = React.memo(({ item }) => {
     const navigation = useNavigation();
     const defaultImage = 'https://nhadaututhanhcong.com/wp-content/uploads/2022/04/news-3.jpg';
@@ -57,19 +104,42 @@ const ArticleItem = React.memo(({ item }) => {
 const HorizontalMenu = ({ currentCategory }) => {
     const allCategories = ['Tất cả', 'Thế giới', 'Thể thao', 'Công nghệ', 'Khoa học', 'Kinh doanh', 'Giải trí', 'Sức khoẻ', 'Chính trị', 'Môi trường', 'Đồ ăn'];
 
-    useEffect(() => {
-        setSelectedCategory(currentCategory);
-    }, [currentCategory]);
-
     const [selectedCategory, setSelectedCategory] = useState(currentCategory);
     const [articles3, setArticles3] = useState([]);
+    const [articles4, setArticles4] = useState([]);
+    const [articles5, setArticles5] = useState([]);
+    const [articles6, setArticles6] = useState([]);
+    const [articles7, setArticles7] = useState([]);
+    // const [articles8, setArticles4] = useState([]);
     const [dataLoaded, setDataLoaded] = useState(false);
 
     // Thêm hàm loadData để tải dữ liệu ban đầu
     const loadData = async (category) => {
         setDataLoaded(false);
-        const fetchedArticles3 = await fetchArticles3();
-        setArticles3(fetchedArticles3);
+        let fetchedArticles = [];
+        if (category === 'Thế giới') {
+            fetchedArticles = await fetchArticles4();
+        } else if (category === 'Thể thao') {
+            fetchedArticles = await fetchArticles5();
+        } else if (category === 'Công nghệ') {
+            fetchedArticles = await fetchArticles6();
+        } else if (category === 'Khoa học') {
+            fetchedArticles = await fetchArticles7();
+        } else {
+            fetchedArticles = await fetchArticles3();
+        }
+        // Update the state based on the fetched category
+        if (category === 'Thế giới') {
+            setArticles4(fetchedArticles);
+        } else if (category === 'Thể thao') {
+            setArticles5(fetchedArticles);
+        } else if (category === 'Công nghệ') {
+            setArticles6(fetchedArticles);
+        } else if (category === 'Khoa học') {
+            setArticles7(fetchedArticles);
+        } else {
+            setArticles3(fetchedArticles);
+        }
         setDataLoaded(true);
     };
 
@@ -80,6 +150,7 @@ const HorizontalMenu = ({ currentCategory }) => {
     const handleCategoryChange = (category) => {
         setSelectedCategory(category);
     };
+
 
     return (
         <View>
@@ -93,7 +164,17 @@ const HorizontalMenu = ({ currentCategory }) => {
                 ))}
             </ScrollView>
             <FlatList
-                data={articles3}
+                data={
+                    selectedCategory === 'Thế giới'
+                        ? articles4
+                        : selectedCategory === 'Thể thao'
+                            ? articles5
+                            : selectedCategory === 'Công nghệ'
+                                ? articles6
+                                : selectedCategory === 'Khoa học'
+                                    ? articles7
+                                    : articles3
+                }
                 keyExtractor={(item, index) => item.article_id || index.toString()}
                 renderItem={({ item }) => <ArticleItem item={item} />}
                 initialNumToRender={20}
