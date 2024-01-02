@@ -3,10 +3,12 @@ import { ActivityIndicator, FlatList, Text, View, StyleSheet, ScrollView } from 
 import { createStackNavigator } from '@react-navigation/stack';
 import { Image, TouchableOpacity, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
+import { BookmarkSquareIcon } from "react-native-heroicons/solid";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const fetchArticles = async () => {
     try {
-        const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35108dc30454607fb819125eab233102cff31`;
+        const url = `https://newsdata.io/api/1/news?country=vi&apikey=pub_35742a058061ecce52ed2c5120a118f59af8c`;
         const response = await fetch(url);
         const json = await response.json();
 
@@ -27,7 +29,46 @@ const ArticleItem = React.memo(({ item }) => {
     const navigateToArticleDetail = (article) => {
         navigation.navigate('Posts', { article });
     };
-
+    const [isBookmarked, toggleBookmark] = useState(false);
+    const toggleBookmarkAndSave = async () => {
+        try {
+          // Check if News Article is already in Storage
+          const savedArticles = await AsyncStorage.getItem("savedArticles");
+          let savedArticlesArray = savedArticles ? JSON.parse(savedArticles) : [];
+          console.log("Check if the article is already bookmarked");
+    
+          // Check if the article is already in the bookmarked list
+          const isArticleBookmarked = savedArticlesArray.some(
+            (savedArticle) => savedArticle.url === item.url
+          );
+    
+          console.log("Check if the article is already in the bookmarked list");
+    
+          if (!isArticleBookmarked) {
+            // If the article is not bookmarked, add it to the bookmarked list
+            savedArticlesArray.push(item);
+            await AsyncStorage.setItem(
+              "savedArticles",
+              JSON.stringify(savedArticlesArray)
+            );
+            toggleBookmark(true);
+            console.log("Article is bookmarked");
+          } else {
+            // If the article is already bookmarked, remove it from the list
+            const updatedSavedArticlesArray = savedArticlesArray.filter(
+              (savedArticle) => savedArticle.url !== item.url
+            );
+            await AsyncStorage.setItem(
+              "savedArticles",
+              JSON.stringify(updatedSavedArticlesArray)
+            );
+            toggleBookmark(false);
+            console.log("Article is removed from bookmarks");
+          }
+        } catch (error) {
+          console.log("Error Saving Article", error);
+        }
+      };
     return (
         <TouchableOpacity onPress={() => navigateToArticleDetail(item)}>
             <View style={styles.card}>
@@ -39,6 +80,17 @@ const ArticleItem = React.memo(({ item }) => {
                         <Text style={styles.date}>{new Date(item.pubDate).toLocaleDateString()}</Text>
                         <Text style={styles.author}>{item.creator || 'Unknown Author'}</Text>
                     </View>
+                </View>
+                <View >
+                        <TouchableOpacity
+                            onPress={toggleBookmarkAndSave}
+                        >
+                            <BookmarkSquareIcon
+                            size={25}
+                            color={isBookmarked ? "green" : "gray"}
+                            strokeWidth={2}
+                            />
+                        </TouchableOpacity>
                 </View>
             </View>
         </TouchableOpacity>
