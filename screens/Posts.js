@@ -10,6 +10,7 @@ const ArticleDetailScreen = ({ route }) => {
 
     return (
         <ScrollView>
+
             <Image source={{ uri: article.image_url || defaultImage  }} style={{ width: '100%', height: 200 }} />
             <View style={{
                 flexDirection: 'row',
