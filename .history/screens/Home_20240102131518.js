@@ -78,11 +78,11 @@ const fetchArticles = async () => {
         const json = await response.json();
 
         // Lọc bài viết không có hình, không có tác giả và không có nội dung
-        // const filteredArticles = json.results.filter((item) => {
-        //     return item.image_url && item.creator && item.content;
-        // });
-        // return filteredArticles || [];
-        return json.results || [];
+        const filteredArticles = json.results.filter((item) => {
+            return item.image_url && item.creator && item.content;
+        });
+
+        return filteredArticles || [];
     } catch (error) {
         console.error('Fetch error: ', error);
         return [];
@@ -232,17 +232,15 @@ const styles = StyleSheet.create({
     },
     carouselItem: {
         height: 200,
-        width: 350,
         justifyContent: 'flex-end',
         padding: 10,
         alignItems: 'center',
-        marginBottom: 5,
+        marginBottom: 10,
 
     },
     carouselImage: {
         flex: 1,
         resizeMode: 'cover',
-        width: 350,
     },
     carouselCategory: {
         color: 'white',
@@ -252,11 +250,8 @@ const styles = StyleSheet.create({
     },
     carouselTitle: {
         fontWeight: 'bold',
-        color: 'black',
-        fontSize: 16,
-        padding: 5,
-        paddingLeft: 5
-        // width: 400
+        color: 'white',
+        fontSize: 18,
     },
     carouselAuthor: {
         color: 'white',

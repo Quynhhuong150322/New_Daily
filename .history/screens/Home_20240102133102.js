@@ -232,17 +232,15 @@ const styles = StyleSheet.create({
     },
     carouselItem: {
         height: 200,
-        width: 350,
         justifyContent: 'flex-end',
         padding: 10,
         alignItems: 'center',
-        marginBottom: 5,
+        marginBottom: 10,
 
     },
     carouselImage: {
         flex: 1,
         resizeMode: 'cover',
-        width: 350,
     },
     carouselCategory: {
         color: 'white',
@@ -253,10 +251,8 @@ const styles = StyleSheet.create({
     carouselTitle: {
         fontWeight: 'bold',
         color: 'black',
-        fontSize: 16,
-        padding: 5,
-        paddingLeft: 5
-        // width: 400
+        fontSize: 18,
+        width: 350
     },
     carouselAuthor: {
         color: 'white',

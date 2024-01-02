@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         padding: 10,
         alignItems: 'center',
-        marginBottom: 5,
+        marginBottom: 10,
 
     },
     carouselImage: {
