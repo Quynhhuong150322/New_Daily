@@ -157,14 +157,6 @@ const HomeScreen = () => {
     }, []);
 
     // Hàm để xử lý thay đổi thể loại
-    useEffect(() => {
-        if (currentCategory === 'all') {
-            setFilteredArticles(articles);
-        } else {
-            const filtered = articles.filter((item) => item.category === currentCategory);
-            setFilteredArticles(filtered);
-        }
-    }, [currentCategory, articles]);
     const handleCategoryChange = (category) => {
         setCurrentCategory(category);
     };

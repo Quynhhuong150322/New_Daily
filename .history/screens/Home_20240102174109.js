@@ -165,9 +165,6 @@ const HomeScreen = () => {
             setFilteredArticles(filtered);
         }
     }, [currentCategory, articles]);
-    const handleCategoryChange = (category) => {
-        setCurrentCategory(category);
-    };
 
     if (isLoading) {
         return (
