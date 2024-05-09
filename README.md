@@ -3,6 +3,8 @@
 
 New Daily App là một ứng dụng đọc tin tức hàng ngày giúp bạn cập nhật thông tin mới nhất từ nhiều nguồn tin khác nhau. Ứng dụng được thiết kế với giao diện thân thiện, cho phép bạn dễ dàng tùy chỉnh nội dung theo sở thích của mình và chia sẻ các bài viết quan trọng với bạn bè và gia đình.
 
+tham khảo trang web bán sách: https://khabookstore.com
+
 ## Tính Năng
 
 - Xem tin tức từ nhiều nguồn tin khác nhau.
